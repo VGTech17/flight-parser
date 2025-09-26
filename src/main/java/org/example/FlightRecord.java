@@ -19,7 +19,15 @@ public class FlightRecord {
     public List<String> phones = new ArrayList<>();
     public String remarksRaw;
 
-    public FlightRecord(String sid, String date, String departureTime, String arrivalTime, String operator, String aircraftType, String aircraftModel, String status, String departureCoords, String arrivalCoords, String remarks, String sourceCenter, List<String> phones, String remarksRaw) {
+    // 🔹 новые поля
+    public String rawMessage;                 // полный исходный текст
+    public List<String> regNumbers = new ArrayList<>(); // регистрационные номера БВС
+
+    public FlightRecord(String sid, String date, String departureTime, String arrivalTime,
+                        String operator, String aircraftType, String aircraftModel, String status,
+                        String departureCoords, String arrivalCoords, String remarks,
+                        String sourceCenter, List<String> phones, String remarksRaw,
+                        String rawMessage, List<String> regNumbers) {
         this.sid = sid;
         this.date = date;
         this.departureTime = departureTime;
@@ -34,122 +42,60 @@ public class FlightRecord {
         this.sourceCenter = sourceCenter;
         this.phones = phones;
         this.remarksRaw = remarksRaw;
+        this.rawMessage = rawMessage;
+        this.regNumbers = regNumbers != null ? regNumbers : new ArrayList<>();
     }
 
-    public FlightRecord() {
-    }
+    public FlightRecord() {}
 
-    public String getSid() {
-        return sid;
-    }
+    // 🔹 геттеры/сеттеры
+    public String getSid() { return sid; }
+    public void setSid(String sid) { this.sid = sid; }
 
-    public void setSid(String sid) {
-        this.sid = sid;
-    }
+    public String getDate() { return date; }
+    public void setDate(String date) { this.date = date; }
 
-    public String getDate() {
-        return date;
-    }
+    public String getDepartureTime() { return departureTime; }
+    public void setDepartureTime(String departureTime) { this.departureTime = departureTime; }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+    public String getArrivalTime() { return arrivalTime; }
+    public void setArrivalTime(String arrivalTime) { this.arrivalTime = arrivalTime; }
 
-    public String getDepartureTime() {
-        return departureTime;
-    }
+    public String getOperator() { return operator; }
+    public void setOperator(String operator) { this.operator = operator; }
 
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
-    }
+    public String getAircraftType() { return aircraftType; }
+    public void setAircraftType(String aircraftType) { this.aircraftType = aircraftType; }
 
-    public String getArrivalTime() {
-        return arrivalTime;
-    }
+    public String getAircraftModel() { return aircraftModel; }
+    public void setAircraftModel(String aircraftModel) { this.aircraftModel = aircraftModel; }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public String getOperator() {
-        return operator;
-    }
+    public String getDepartureCoords() { return departureCoords; }
+    public void setDepartureCoords(String departureCoords) { this.departureCoords = departureCoords; }
 
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
+    public String getArrivalCoords() { return arrivalCoords; }
+    public void setArrivalCoords(String arrivalCoords) { this.arrivalCoords = arrivalCoords; }
 
-    public String getAircraftType() {
-        return aircraftType;
-    }
+    public String getRemarks() { return remarks; }
+    public void setRemarks(String remarks) { this.remarks = remarks; }
 
-    public void setAircraftType(String aircraftType) {
-        this.aircraftType = aircraftType;
-    }
+    public String getSourceCenter() { return sourceCenter; }
+    public void setSourceCenter(String sourceCenter) { this.sourceCenter = sourceCenter; }
 
-    public String getAircraftModel() {
-        return aircraftModel;
-    }
+    public List<String> getPhones() { return phones; }
+    public void setPhones(List<String> phones) { this.phones = phones; }
 
-    public void setAircraftModel(String aircraftModel) {
-        this.aircraftModel = aircraftModel;
-    }
+    public String getRemarksRaw() { return remarksRaw; }
+    public void setRemarksRaw(String remarksRaw) { this.remarksRaw = remarksRaw; }
 
-    public String getStatus() {
-        return status;
-    }
+    public String getRawMessage() { return rawMessage; }
+    public void setRawMessage(String rawMessage) { this.rawMessage = rawMessage; }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDepartureCoords() {
-        return departureCoords;
-    }
-
-    public void setDepartureCoords(String departureCoords) {
-        this.departureCoords = departureCoords;
-    }
-
-    public String getArrivalCoords() {
-        return arrivalCoords;
-    }
-
-    public void setArrivalCoords(String arrivalCoords) {
-        this.arrivalCoords = arrivalCoords;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public String getSourceCenter() {
-        return sourceCenter;
-    }
-
-    public void setSourceCenter(String sourceCenter) {
-        this.sourceCenter = sourceCenter;
-    }
-
-    public List<String> getPhones() {
-        return phones;
-    }
-
-    public void setPhones(List<String> phones) {
-        this.phones = phones;
-    }
-
-    public String getRemarksRaw() {
-        return remarksRaw;
-    }
-
-    public void setRemarksRaw(String remarksRaw) {
-        this.remarksRaw = remarksRaw;
-    }
+    public List<String> getRegNumbers() { return regNumbers; }
+    public void setRegNumbers(List<String> regNumbers) { this.regNumbers = regNumbers; }
 
     @Override
     public String toString() {
@@ -158,7 +104,7 @@ public class FlightRecord {
                 ", date='" + date + '\'' +
                 ", departureTime='" + departureTime + '\'' +
                 ", arrivalTime='" + arrivalTime + '\'' +
-                ", operatorPersons=" + operator +
+                ", operator='" + operator + '\'' +
                 ", aircraftType='" + aircraftType + '\'' +
                 ", aircraftModel='" + aircraftModel + '\'' +
                 ", status='" + status + '\'' +
@@ -168,6 +114,8 @@ public class FlightRecord {
                 ", sourceCenter='" + sourceCenter + '\'' +
                 ", phones=" + phones +
                 ", remarksRaw='" + remarksRaw + '\'' +
+                ", rawMessage='" + rawMessage + '\'' +
+                ", regNumbers=" + regNumbers +
                 '}';
     }
 }
